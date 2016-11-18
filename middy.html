@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="blackJack">
+<head>
+	<title>BlackJack Anti-Violence Ed.</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+	<script src="middy.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="middy.css">
+
+</head>
+<body class="container" ng-controller="buttonsController as game">
+
+<h1 class="whiteLetter">{{game.greeting}}</h1>
+
+<br>
+
+
+
+	<div class="pkrTbl"> <!-- openpkrDiv -->
+		<div class="row grid">
+			<div class="col-md-2 grid">
+				<ul>
+					<li><br>
+						<p id="onTbl">Place your bet.</p>
+					</li>	
+					<br>
+					<li>
+						<button type="submit" class="btn btn-success btn-block">Bet</button>
+					</li>
+					<br>
+					<li>
+						<button type="submit" ng-click="game.getDraw()" class="btn btn-success btn-block">Deal</button>
+					</li>
+					<br>
+					<li>
+						<button type="submit" ng-click="game.getShuffle()" class="btn btn-success btn-block">Shuffle</button>
+					</li>
+				</ul>
+			</div> <!-- closecolGrid2 -->
+
+
+			<div class="col-md-4 grid">
+					<img src = "{{game.cards[0].image}}">
+					<img src="{{game.cards[2].image}}">
+				</div>
+			
+			<div class="col-md-4 grid">
+				<img src = "{{game.cards[1].image}}"/>
+				<img src = "{{game.cards[3].image}}"/>
+			</div>
+
+		</div> <!-- closerowGrid -->
+	</div> <!-- closepkrDiv -->
+
+<!--
+	<li>
+				<div class="row grid">
+  <div class="col-xs-6 col-md-8 grid">50% or 66%</div>
+  <div class="col-md-4 grid">.col-md-4</div>
+	</div>
+					{{game.}}
+					 <button type="submit" class="btn btn-success btn-block"></button> 
+				</li>
+-->
+
+
+</body>
+</html>

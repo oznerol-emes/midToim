@@ -2,6 +2,9 @@
 <html ng-app="blackJack">
 <head>
 	<title>BlackJack Anti-Violence Ed.</title>
+
+	<link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
 	<script src="middy.js"></script>
 	<!-- <script src="expresserver.js"></script> -->
@@ -19,60 +22,65 @@
 
 	<div class="pkrTbl"> <!-- openpkrDiv -->
 		<div class="row grid">
-			<div class="col-md-2 grid">
+			<div class="col-md-3 grid"></div>
+		</div>
+
+		<div class="row grid">
+			<div class="col-md-3 grid">
 				<ul>
-					<li><br>
-						<p id="onTbl">Place your bet.</p>
+					<li>
+						<p class="whiteLetter">Place your bet.</p>
 					</li>	
+					<li>
+						<button class="btn btn-success btn-block" ng-click="game.placeBet(1)">Bet1</button>
+						<button class="btn btn-success btn-block" ng-click="game.placeBet(3)">Bet3</button>
+						<button class="btn btn-success btn-block" ng-click="game.placeBet(5)">Bet5</button>
+					</li>
+					<br>
 					<br>
 					<li>
-						<button type="submit" class="btn btn-success btn-block">Bet</button>
+						<button ng-click="game.getDraw()" class="btn btn-success btn-block">Deal</button>
 					</li>
 					<br>
 					<li>
-						<button type="submit" ng-click="game.getDraw()" class="btn btn-success btn-block">Deal</button>
-					</li>
+					<button ng-click="game.reDeal()" class="btn btn-success btn-block">ReDeal</button>
+					</</li>
 					<br>
 					<li>
-						<button type="submit" ng-click="game.getReshuffle()" class="btn btn-success btn-block">ReShuffle</button>
+						<button ng-click="game.getReshuffle()" class="btn btn-success btn-block">ReShuffle</button>
 					</li>
 				</ul>
 			</div> <!-- closecolGrid2 -->
 
-
-			<div class="col-md-4 grid">
-
-	<!-- so bet playercard dealercard bet playercard short pause 
-	dealer card if playerHand lessthan dealerHand then player gets bet times 2 back added to bank else if reverse take bet subtract from bank so going to need to turn cardpics into numbers using var and hopefully the either double mustache or URL will work as an identifier-->
-	<!-- also will need a blackjack winner multiply bet winnings by two and a half -->
-
-			<p>Dealer Hand</p>
+			<div class="col-md-3 grid">
+				<p class="whiteLetter">Dealer Hand</p>
 	<!-- fade in -->
-					<img src = "{{game.cards[0].image}}">
+					<img class="keyards" src = "{{game.cards[0].image}}"/>
 
-					<img src="{{game.cards[2].image}}">
-				</div>
-			
-			<div class="col-md-4 grid">
-				<p>Your Hand</p>
+					<img class="keyards" src = "{{game.dealerCards[0].image}}"/>
+			</div>
+			<div class="col-md-3 grid">
+				<p class="whiteLetter">Your Hand</p>
 	<!-- //fade in  -->
-				<img src = "{{game.cards[1].image}}"/>
-				<img src = "{{game.cards[3].image}}"/>
+				<img class="keyards" src = "{{game.cards[1].image}}"/>
+				
+				<img class="keyards" src = "{{game.cards[2].image}}"/>
+			</div>
+
+			<div class="col-md-2">
+					<p class="whiteLetter">Your Current Bet: $ {{game.currentBet}} </p> 
 			</div>
 
 		</div> <!-- closerowGrid -->
 	</div> <!-- closepkrDiv -->
 
-<!--
-	<li>
-				<div class="row grid">
-  <div class="col-xs-6 col-md-8 grid">50% or 66%</div>
-  <div class="col-md-4 grid">.col-md-4</div>
-	</div>
-					{{game.}}
-					 <button type="submit" class="btn btn-success btn-block"></button> 
-				</li>
--->
+	
+
+<!-- so bet playercard dealercard bet playercard short pause 
+	dealer card if playerHand lessthan dealerHand then player gets bet times 2 back added to bank else if reverse take bet subtract from bank so going to need to turn cardpics into numbers using var and hopefully the either double mustache or URL will work as an identifier-->
+	<!-- also will need a blackjack winner multiply bet winnings by two and a half -->
+
+	<!-- Thread.sleep(1000); might be set.Interval see if this will work in js or find alternative -->
 
 
 </body>

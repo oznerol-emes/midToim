@@ -3,7 +3,7 @@ angular.module('blackJack', [])
 	
 	var game = this;
 	
-		game.greeting = 'Welcome to Anti-Violence BlackJack Ver. 1.OH.Squirrel';
+		game.greeting = 'Welcome to Anti-Violence BlackJack Ver. 1.Oh.Squirrel';
 
 
 																											//below for GET SHUFFLE
@@ -22,25 +22,69 @@ game.getShuffle= function () { //get shuffle open
 }; // get shuffle close
 
 
+																											// below for first bet
+game.reDeal = function () {
+	game.firstDeal = true;
+	game.secondDeal = false; // to limit players bet
+	game.currentBet = 0;
+} 
+	game.reDeal()
+
+game.placeBet = function(betAmount) { // only will run on betting
+	console.log('in place bet')
+	if (game.firstDeal) { 
+		game.currentBet = betAmount; 
+
+		game.firstDeal = false;  //now its false
+		console.log(game.currentBet);
+	} else if (game.secondDeal){
+		game.currentBet += betAmount;
+		game.secondDeal = false;
+		game.getDrawSecond(); 
+	};
+}
 
 
-																										//below for DRAW A CARD 
-
+																											//below for DRAW A CARD
 game.getDraw= function () { //get draw open
 	console.log('check to see if draw loading up')
-	$http.get('https://deckofcardsapi.com/api/deck/dhy28vl3gag7/draw/?count=4').then(
+	$http.get('https://deckofcardsapi.com/api/deck/dhy28vl3gag7/draw/?count=3').then(
 		function (res) { //open res
 			console.log('success!!!', res.data);
 			game.cards = res.data.cards;
+			game.secondDeal = true;
 		},// close res
 		function(err) {
             console.log(err)
     }); 
 } // get draw close
 
+																										
 
 
- 												//below for RESHUFFLE CARDS
+
+																										// below for dealer card deal
+game.getDrawSecond= function () { //get draw open
+	console.log('check to see if draw loading up')
+	$http.get('https://deckofcardsapi.com/api/deck/dhy28vl3gag7/draw/?count=1').then(
+		function (res) { //open res
+			console.log('success!!!', res.data);
+			game.dealerCards = res.data.cards;
+
+		},// close res
+		function(err) {
+            console.log(err)
+    }); 
+} // get draw close
+
+																										 
+
+
+
+
+
+
+ 																										//below for RESHUFFLE CARDS
 
 game.getReshuffle= function () { //get reshuffle open
 	console.log('check to see if shuffle loading up')
@@ -88,8 +132,8 @@ game.getPartialDeck= function () { //get partial Deck open
 // 										//below for ADDING TO PILES
 
 game.getAddingToPiles= function () { //get adding to piles open
-	console.log('check to see if shuffle loading up')
-	$http.get('https://deckofcardsapi.com/api/deck/<<deck_id>>/pile/<<pile_name>>/add/?cards=AS,2S').then(
+	console.log('check to see if piles loading up')									//
+	$http.get('https://deckofcardsapi.com/api/deck/dhy28vl3gag7/pile/avbjpile/add/?cards=AS,2S').then(
 		function (res) { //open res
 			console.log('piles a go')
 			game.piles = res.data

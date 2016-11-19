@@ -1,16 +1,20 @@
 body {
 	background-color: black;
 }
-#onTbl {
-	text-decoration-color: white;
+.onTbl {
+	
 }
 
+.whiteLetter {
+	color: white;
+}
 
 .pkrTbl {
 	background: center;
 	background-image: url(blkjcktbl.png);
 	background-image-size: auto;
 	max-width: auto;
+	max-height: auto;
 	background-repeat: no-repeat;
 	font-size: 25px;
 	border-style: dotted;
@@ -18,21 +22,23 @@ body {
 }
 .pkrTbl img{
 
-
-
 }
 
-.body p {
-	text-decoration-color: white;
-}
+
 ul {
 	list-style-type: none;
 }
 li {
 	padding: 5px;
+
 }
 
 button {
 	max-width: 7.0%;
 	box-shadow: 4px;
+}
+
+.keyards {
+ max-width: 130px;
+ max-height: 182px;
 }
